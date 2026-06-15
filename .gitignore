@@ -1,14 +1,4 @@
-navcafe - copy
-pankajbadhan
-com
-monMan
-navcaf
-pnl
-tasty bite
-tj
-webook
-xfq
-oddEven.html
-see-quotes
-Tasty-Bite
-vK
+backend/node_modules
+backend/.env
+backend/generated/prisma
+backend/dc.txt
