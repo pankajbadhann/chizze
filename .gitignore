@@ -1,4 +1,10 @@
 backend/node_modules
+frontend/node_modules
+
 backend/.env
+frontend/.env
+
 backend/generated/prisma
 backend/dc.txt
+
+backend

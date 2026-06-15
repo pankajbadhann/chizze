@@ -6,9 +6,7 @@ const createChat = async (data) => {
   });
 };
 
-const findChatsByUserId = async (
-  userId
-) => {
+const findChatsByUserId = async (userId) => {
   return prisma.chat.findMany({
     where: {
       userId,
@@ -19,21 +17,28 @@ const findChatsByUserId = async (
   });
 };
 
-const findChatByIdAndUserId =
-  async (
-    chatId,
-    userId
-  ) => {
-    return prisma.chat.findFirst({
-      where: {
-        id: chatId,
-        userId,
-      },
-    });
-  };
+const findChatByIdAndUserId = async (chatId, userId) => {
+  return prisma.chat.findFirst({
+    where: {
+      id: chatId,
+      userId,
+    },
+  });
+};
+
+const updateLastMessage = async (chatId, lastMessage) => {
+  return prisma.chat.update({
+    where: { id: chatId },
+    data: {
+      lastMessage,
+      updatedAt: new Date(),
+    },
+  });
+};
 
 module.exports = {
   createChat,
   findChatsByUserId,
   findChatByIdAndUserId,
+  updateLastMessage,
 };

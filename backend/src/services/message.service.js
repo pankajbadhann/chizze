@@ -2,6 +2,32 @@ const messageRepo = require("../repositories/message.repository");
 
 const chatRepo = require("../repositories/chat.repository");
 
+const messageRepo = require("../repositories/message.repository");
+
+const createMessage = async ({ chatId, userId, content, position }) => {
+  const chat = await chatRepo.findChatByIdAndUserId(chatId, userId);
+
+  if (!chat) {
+    const error = new Error("Chat not found");
+    error.statusCode = 404;
+    throw error;
+  }
+
+  const message = await messageRepo.createMessage({
+    chatId,
+    userId,
+    content,
+    position,
+  });
+
+  /**
+   * IMPORTANT: UPDATE CHAT LAST MESSAGE
+   */
+  await chatRepo.updateLastMessage(chatId, content);
+
+  return message;
+};
+
 const createMessage = async ({ chatId, userId, content, position }) => {
   const chat = await chatRepo.findChatByIdAndUserId(chatId, userId);
 

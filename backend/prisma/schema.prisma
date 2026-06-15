@@ -27,6 +27,8 @@ model Chat {
   user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   messages Message[]
+  lastMessage String?
+  updatedAt   DateTime @updatedAt
 
   @@index([userId])
 }
