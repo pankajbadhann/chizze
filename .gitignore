@@ -7,4 +7,3 @@ frontend/.env
 backend/generated/prisma
 backend/dc.txt
 
-backend
